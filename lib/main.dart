@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,28 +13,43 @@ class MyApp extends StatefulWidget {
 }
 
 class _myAppState extends State<MyApp> {
-  int count = 0;
-  Color brown = Colors.brown;
-  Color black = Colors.black;
-  Color temp = Colors.white;
+  //   int count = 0;
+  //   Color brown = Colors.brown;
+  //   Color black = Colors.black;
+  //   Color temp = Colors.white;
+  List<Color> colors = [
+    Colors.brown,
+    Colors.black,
+    Colors.white,
+    Colors.red,
+    Colors.green,
+    Colors.blue,
+    Colors.yellow,
+    Colors.purple,
+    Colors.orange,
+    Colors.pink,
+  ];
+  int appbar = 0; // Index for the app bar color
+  int background = 0; // Index for the background color
+  Random random = Random();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: brown,
+        backgroundColor: colors[background],
         appBar: AppBar(
-          backgroundColor: black,
+          backgroundColor: colors[appbar],
           centerTitle: true,
-          title: Text('$count', style: TextStyle(color: Colors.white)),
+          //   title: Text('$count', style: TextStyle(color: Colors.white)),
         ),
         body: MaterialButton(
           onPressed: () {
             setState(() {
-              temp = brown;
-              brown = black;
-              black = temp;
-              count++;
+              // Change the app bar color randomly
+              appbar = random.nextInt(colors.length);
+              // Change the background color randomly
+              background = random.nextInt(colors.length);
             });
           },
           child: Image.asset('images/myDashatar.png'),

@@ -12,20 +12,26 @@ class MyApp extends StatefulWidget {
 
 class _myAppState extends State<MyApp> {
   int count = 0;
+  Color brown = Colors.brown;
+  Color black = Colors.black;
+  Color temp = Colors.white;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: brown,
         appBar: AppBar(
-          backgroundColor: Colors.blue[900],
+          backgroundColor: black,
           centerTitle: true,
           title: Text('$count', style: TextStyle(color: Colors.white)),
         ),
         body: MaterialButton(
           onPressed: () {
             setState(() {
+              temp = brown;
+              brown = black;
+              black = temp;
               count++;
             });
           },

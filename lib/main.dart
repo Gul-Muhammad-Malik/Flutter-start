@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -29,6 +30,8 @@ class _myAppState extends State<MyApp> {
     Colors.orange,
     Colors.pink,
   ];
+  String kick = 'Kick.wav';
+  final player = AudioPlayer();
   int appbar = 0; // Index for the app bar color
   int background = 0; // Index for the background color
   Random random = Random();
@@ -46,6 +49,7 @@ class _myAppState extends State<MyApp> {
         body: MaterialButton(
           onPressed: () {
             setState(() {
+              player.play(AssetSource(kick));
               // Change the app bar color randomly
               appbar = random.nextInt(colors.length);
               // Change the background color randomly
